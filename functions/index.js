@@ -20,10 +20,13 @@ exports.addMessage = functions.https.onRequest((req, res) => {
   const original = req.body.text;
   // Push the new message into the Realtime Database using the Firebase Admin SDK.
   return admin.database().ref('/messages').push({
-    original: original
+    original: original,
+    status: ''
   }).then((snapshot) => {
     res.send(req.body.user_name + " your thank you message has been received!");
     // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
     // return res.redirect(303, snapshot.ref);
+  }).then(() => {
+
   });
 });
