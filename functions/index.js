@@ -15,18 +15,29 @@ admin.initializeApp(functions.config().firebase);
 // Realtime Database under the path /messages/:pushId/original
 exports.addMessage = functions.https.onRequest((req, res) => {
   //console.log('req is ' + JSON.stringify(req.body));
-  // Grab the text parameter.
-  // const original = req.path;
   const original = req.body.text;
-  // Push the new message into the Realtime Database using the Firebase Admin SDK.
-  return admin.database().ref('/messages').push({
-    original: original,
-    status: ''
-  }).then((snapshot) => {
-    res.send(req.body.user_name + " your thank you message has been received!");
-    // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
-    // return res.redirect(303, snapshot.ref);
-  }).then(() => {
 
-  });
+  // check for @name and bold it if exists
+  /* if (original.indexOf('@') !== -1) {
+    var messageBody = original.split(' ');
+    for (var i = 0; i < messageBody.length; i++) {
+      if (messageBody[i].includes('@')) {
+        thankYouName = messageBody[i];
+      }
+    }
+  } */
+
+  // Push the new message into the Realtime Database using the Firebase Admin SDK.
+  return admin
+    .database()
+    .ref('/messages')
+    .push({
+      original: original,
+      status: '',
+      submitter: req.body.user_name,
+      //thank_you_name: thankYouName,
+    })
+    .then(snapshot => {
+      res.send(req.body.user_name + ' your thank you message has been received!');
+    });
 });
