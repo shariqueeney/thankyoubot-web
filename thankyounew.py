@@ -4,6 +4,8 @@ import pyrebase
 import cups
 from fpdf import FPDF
 
+import requests
+
 #Firebase Configuration
 
 config = {
@@ -25,6 +27,8 @@ printer_name = printers.keys()[0]
 
 #While loop to run until user kills program
 while(True):
+    r = requests.get("https://us-central1-thank-you-bot.cloudfunctions.net/addMessage")
+
     messages = db.child("messages").order_by_child("status").equal_to("").get()
 
     for message in messages.each():
