@@ -1,10 +1,23 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+        <ul>
+            <li *ngFor="let item of items | async">
+                <pre>{{ item | json }}</pre>
+            </li>
+        </ul>
+    `,
 })
 export class AppComponent {
-  title = 'cloud-firestore-test';
+  public items: AngularFireList<any>;
+  constructor(db: AngularFireDatabase) {
+    this.items = db.list('/messages');
+    console.log(this.items);
+  }
 }
