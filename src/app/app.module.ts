@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
 import {
+  MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
   MatOptionModule,
@@ -16,6 +17,7 @@ import {
   MatListModule,
   MatIconModule,
   MatToolbarModule,
+  MatDialogModule,
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +32,7 @@ import { ThankyouFormComponent } from './thankyou-form/thankyou-form.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    MatButtonModule,
     MatListModule,
     MatIconModule,
     MatFormFieldModule,
@@ -37,11 +40,13 @@ import { ThankyouFormComponent } from './thankyou-form/thankyou-form.component';
     MatOptionModule,
     MatSelectModule,
     MatToolbarModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
   providers: [],
+  entryComponents: [ThankyouFormComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
