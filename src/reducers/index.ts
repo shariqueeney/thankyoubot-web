@@ -5,7 +5,7 @@ import {
   createSelector,
   MetaReducer,
 } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { ThankYouModel } from '../models';
@@ -19,20 +19,20 @@ export function sortBySubmitter(a: ThankYouModel, b: ThankYouModel): number {
   return a.submitter.localeCompare(b.submitter);
 }
 
-export const initialState = adapter.getInitialState();
-
 export const adapter: EntityAdapter<ThankYouModel> = createEntityAdapter<ThankYouModel>({
   sortComparer: sortBySubmitter,
 });
 
-export function reducer(state: Shape = initialState, action: MainActions.Union): Shape {
+export const initialState = adapter.getInitialState();
+
+export function reducer(state: State = initialState, action: MainActions.Union): State {
   switch (action.type) {
     case MainActions.Types.LoadSuccess: {
       return adapter.addAll(action.thankYous, state);
     }
 
     case MainActions.Types.Save: {
-      return adapter.addOne(thankYou, state);
+      return adapter.addOne(action.thankYou, state);
     }
 
     default: {

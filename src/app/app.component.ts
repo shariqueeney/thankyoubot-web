@@ -43,7 +43,7 @@ export class AppComponent {
   constructor(db: AngularFireDatabase, private formBuilder: FormBuilder) {
     this.thankYouList = db.list('messages');
     this.thankYous = this.thankYouList.valueChanges();
-    MainActions.createLoadSuccessAction(this.thankYous);
+    // MainActions.createLoadSuccessAction(this.thankYous);
     console.log(this.thankYous);
   }
 
