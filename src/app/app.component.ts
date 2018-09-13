@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
+import { MainActions } from '../actions';
+
 @Component({
   selector: 'app-root',
   template: `
@@ -41,6 +43,7 @@ export class AppComponent {
   constructor(db: AngularFireDatabase, private formBuilder: FormBuilder) {
     this.thankYouList = db.list('messages');
     this.thankYous = this.thankYouList.valueChanges();
+    MainActions.createLoadSuccessAction(this.thankYous);
     console.log(this.thankYous);
   }
 
@@ -54,7 +57,6 @@ export class AppComponent {
       submitter,
       original,
     });
-    await delay(300);
   }
 
   onFormSubmit() {
