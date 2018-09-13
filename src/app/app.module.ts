@@ -8,6 +8,19 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatListModule,
+  MatIconModule,
+} from '@angular/material';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -15,6 +28,15 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    MatListModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
