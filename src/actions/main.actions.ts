@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { ThankYouModel } from '../models';
 
 export enum Types {
   Save = '[Thank You] Save',
