@@ -7,7 +7,13 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-root',
   template: `
-        <h1>Latest Thank Yous</h1>
+  <mat-toolbar color="primary">
+    <span>Latest Thank You Messages</span>
+
+    <span class="example-fill-remaining-space"></span>
+
+    <span><mat-icon>library_add_new</mat-icon></span>
+  </mat-toolbar>
         <mat-list>
             <mat-list-item  *ngFor="let thankYou of thankYous | async; let i = index;">
                 <mat-icon mat-list-icon>brightness_5</mat-icon>
@@ -33,6 +39,15 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   </div>
 <br><br><br>
 `,
+  styles: [
+    `
+      .example-fill-remaining-space {
+        /* This fills the remaining space, by using flexbox. 
+         Every toolbar row uses a flexbox row layout. */
+        flex: 1 1 auto;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {

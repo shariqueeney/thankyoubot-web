@@ -15,14 +15,16 @@ import {
   MatSelectModule,
   MatListModule,
   MatIconModule,
+  MatToolbarModule,
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ThankyouFormComponent } from './thankyou-form/thankyou-form.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ThankyouFormComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -34,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
+    MatToolbarModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
