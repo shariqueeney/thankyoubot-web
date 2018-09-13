@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "cloud-firestore-test"
+  "defaultProject": "cloud-firestore-test",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
