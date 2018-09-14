@@ -42,7 +42,7 @@ import { Subscription, interval } from 'rxjs';
           </span>
         </mat-toolbar>
             <mat-list>
-                <mat-list-item  *ngFor="let thankYou of thankYous | async; let i = index;">
+                <mat-list-item  *ngFor="let thankYou of thankYouArray; let i = index;">
                     <mat-icon mat-list-icon>star</mat-icon>
                     <h4 mat-line>&quot;{{ thankYou.original }}&quot;</h4>
                     <p mat-line> {{ thankYou.submitter.replace('.', ' ') | titlecase }}</p>
@@ -157,7 +157,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     this.thankYous = this.thankYouList.valueChanges();
     // MainActions.createLoadSuccessAction(this.thankYous);
     this.thankYous.subscribe(thankYous => {
-      return (this.thankYouArray = thankYous);
+      this.thankYouArray = thankYous;
+      return this.thankYouArray.reverse();
     });
   }
 
