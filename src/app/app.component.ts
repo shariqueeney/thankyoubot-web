@@ -154,7 +154,20 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   thankYou: string;
   name: string;
   takeOff = false;
-  birds = ['./assets/flappy-bird.gif', './assets/Animate-bird-slide-25.gif'];
+  birds = [
+    './assets/flappy-bird.gif',
+    './assets/Animate-bird-slide-25.gif',
+    '3HOL.gif',
+    'bird-grump.gif',
+    'crow.gif',
+    'derp-yellow.gif',
+    'dragon.gif',
+    'flappy-2.gif',
+    'giphy.gif',
+    'pegasus.gif',
+    'seagull.gif',
+    't-bird.gif',
+  ];
   photoUrl = this.birds[Math.floor(Math.random() * this.birds.length)];
   // photoUrl = './assets/flappy-bird.gif';
   interval: Subscription;
